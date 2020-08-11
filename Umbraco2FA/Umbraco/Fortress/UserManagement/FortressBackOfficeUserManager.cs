@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
+using Log4Net;
 using Umbraco.Core;
 using Umbraco.Core.Models.Identity;
 using Umbraco.Core.Security;

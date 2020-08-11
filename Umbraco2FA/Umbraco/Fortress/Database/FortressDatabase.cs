@@ -1,16 +1,8 @@
-﻿using System;
-using System.Linq;
-using System.Net;
-using System.Web;
-using Microsoft.AspNet.Identity.Owin;
+﻿using System.Linq;
 using Orc.Fortress.Database.Models;
-using umbraco;
 using Umbraco.Core;
 using Umbraco.Core.Persistence;
 using Umbraco.Web;
-using Umbraco.Web.Cache;
-using System.Collections.Generic;
-using Orc.Fortress;
 using Umbraco.Core.Persistence.SqlSyntax;
 
 namespace Orc.Fortress.Database

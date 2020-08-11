@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Orc.Fortress
+﻿namespace Orc.Fortress
 {
     internal class FortressConstants
     {

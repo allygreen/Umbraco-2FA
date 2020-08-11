@@ -6,7 +6,6 @@ using System.Web;
 using Microsoft.Owin;
 using Microsoft.Owin.Logging;
 using Orc.Fortress;
-
 using Owin;
 using Umbraco.Core;
 using Umbraco.Core.Configuration.UmbracoSettings;

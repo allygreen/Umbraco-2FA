@@ -42,7 +42,7 @@
   <files>
   	<% files.forEach(function(file) { %>
   	<file>
-      <guid><%= file.guid %>.<%= file.ext %></guid>
+      <guid><%= file.guid %></guid>
       <orgPath><%= file.dir %></orgPath>
       <orgName><%= file.name %></orgName>
     </file>

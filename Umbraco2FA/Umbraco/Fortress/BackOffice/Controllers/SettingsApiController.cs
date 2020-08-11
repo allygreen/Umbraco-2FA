@@ -1,13 +1,8 @@
 ﻿using Orc.Fortress.Attributes;
-
 using Orc.Fortress.Cache;
-using Orc.Fortress.Database;
-
-
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 
 namespace Orc.Fortress.BackOffice.Controllers
 {
@@ -48,6 +43,7 @@ namespace Orc.Fortress.BackOffice.Controllers
             var details = CustomDatabase.GetUserDetails(id);
             if (details == null || !details.IsValidated)
             {
+                Logging.Logger.Error(GetType(), "This account hasnt got authenticator setup", new UnauthorizedAccessException("This account hasnt got authenticator setup"));
                 throw new UnauthorizedAccessException("This account hasnt got authenticator setup");
             }
 
@@ -76,6 +72,7 @@ namespace Orc.Fortress.BackOffice.Controllers
         {
             if (!Security.CurrentUser.AllowedSections.Contains(FortressConstants.UmbracoApplication.ApplicationAlias))
             {
+                Logging.Logger.Error(GetType(), "User tried to access section without correct access rights", new Exception("You do not have access to this section"));
                 throw new Exception("You do not have access to this section");
             }
         }

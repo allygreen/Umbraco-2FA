@@ -25,6 +25,7 @@ namespace Orc.Fortress.UserManagement
         public new static FortressBackOfficeSignInManager Create(IdentityFactoryOptions<BackOfficeSignInManager> options,
             IOwinContext context, ILogger logger)
         {
+
             return new FortressBackOfficeSignInManager(
                 context.GetBackOfficeUserManager(),
                 context.Authentication,

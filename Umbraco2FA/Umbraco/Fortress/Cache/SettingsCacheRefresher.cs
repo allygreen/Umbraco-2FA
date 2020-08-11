@@ -1,14 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Orc.Fortress.Database;
 using umbraco.interfaces;
 using Umbraco.Core;
 using Umbraco.Core.Cache;
-using Umbraco.Core.Models;
-using Umbraco.Web;
 
 namespace Orc.Fortress.Cache
 {

@@ -26,6 +26,7 @@ namespace Orc.Fortress.BackOffice.Controllers
             var details = CustomDatabase.GetUserDetails(userId);
             if (details != null && details.IsValidated)
             {
+                Logging.Logger.Error(GetType(), "This account has already setup GoogleAuthenticator", new UnauthorizedAccessException("This account has already setup GoogleAuthenticator"));
                 throw new UnauthorizedAccessException("This account has already setup GoogleAuthenticator");
             }
 
@@ -69,6 +70,7 @@ namespace Orc.Fortress.BackOffice.Controllers
             var details = CustomDatabase.GetUserDetails(userId);
             if (details != null && details.IsValidated)
             {
+                Logging.Logger.Error(GetType(), "This account has already setup GoogleAuthenticator", new UnauthorizedAccessException("This account has already setup GoogleAuthenticator"));
                 throw new UnauthorizedAccessException("This account has already setup GoogleAuthenticator");
             }
 
@@ -96,6 +98,7 @@ namespace Orc.Fortress.BackOffice.Controllers
             var details = CustomDatabase.GetUserDetails(userId);
             if (details == null || !details.IsValidated)
             {
+                Logging.Logger.Error(GetType(), "This account hasnt got authenticator setup", new UnauthorizedAccessException("This account hasnt got authenticator setup"));
                 throw new UnauthorizedAccessException("This account hasnt got authenticator setup");
             }
 

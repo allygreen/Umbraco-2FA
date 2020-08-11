@@ -2,6 +2,7 @@
 module.exports = function(grunt) {
   require('load-grunt-tasks')(grunt);
   var path = require('path');
+  const sass = require('node-sass');
 
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
@@ -23,7 +24,7 @@ module.exports = function(grunt) {
             tasks: ['msbuild:dist', 'copy:dll']
         },
         html: {
-            files: ['Umbraco2FA/**/*.html'],
+          files: ['Umbraco2FA/**/*.html'],
             tasks: ['copy:html', 'copy:treeHtml']
         },
         js: {
@@ -94,8 +95,8 @@ module.exports = function(grunt) {
       treeHtml: {
         cwd: 'Umbraco2FA/views/backoffice/fortressTree/',
         src: [
-            'edit.html',
-            'TwoFactor.html'
+          'edit.html',
+          'TwoFactor.html'
         ],
         dest: '<%= basePath %>/backoffice/fortressTree/', 
         expand: true,
@@ -106,9 +107,9 @@ module.exports = function(grunt) {
 	  twoFAhtml: {
         cwd: 'Umbraco2FA/views/Twofactor/',
         src: [
-            'Setup.html',
-            'smsProvider.html',
-            'TwoFactorLogin.html'
+          'Setup.html',
+          'smsProvider.html',
+          'TwoFactorLogin.html'
         ],
         dest: '<%= basePath %>/backoffice/TwoFactor/', 
         expand: true,
@@ -147,19 +148,24 @@ module.exports = function(grunt) {
     },
 
     umbracoPackage: {
-      options: {
-        name: "<%= pkgMeta.name %>",
-        version: '<%= pkgMeta.version %>',
-        url: '<%= pkgMeta.url %>',
-        license: '<%= pkgMeta.license %>',
-        licenseUrl: '<%= pkgMeta.licenseUrl %>',
-        author: '<%= pkgMeta.author %>',
-        authorUrl: '<%= pkgMeta.authorUrl %>',
-        manifest: 'config/package.xml',
-        readme: 'config/readme.txt',
-        sourceDir: 'tmp/umbraco',
-        outputDir: 'pkg',
-      }
+        dist: {
+          src: 'tmp/umbraco',		  // Path to a folder containing the files to be packaged
+          dest: 'pkg',
+          options: {
+          name: "Umbraco-2FA",
+          version: '2.1.0',
+          url: 'findbusinesssupport.gov.uk',
+          license: 'MIT',
+          licenseUrl: 'MIT',
+          author: 'OffroadCode - modified by SE',
+          authorUrl: 'findbusinesssupport.gov.uk',
+          manifest: 'config/package.xml',
+          readme: 'config/readme.txt',
+          readmeContents: 'config/readme.txt',
+          sourceDir: 'tmp/umbraco',
+          outputDir: 'pkg',
+        },
+      },
     },
 
     jshint: {
@@ -174,6 +180,8 @@ module.exports = function(grunt) {
   sass: {
 		dist: {
 			options: {
+        implementation: sass, 
+        sourceMap: true,
 				style: 'compressed'
 			},
 			files: {

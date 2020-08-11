@@ -1,5 +1,4 @@
-﻿using Orc.Fortress;
-using Umbraco.Web.Mvc;
+﻿using Umbraco.Web.Mvc;
 
 namespace Orc.Fortress.Attributes
 {

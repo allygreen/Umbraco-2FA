@@ -7,8 +7,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Log4Net;
 using System.Threading.Tasks;
 using Umbraco.Core.Models.Identity;
+using Orc.Fortress.Logging;
 
 namespace Orc.Fortress.TwoFactorProviders
 {
@@ -54,6 +56,7 @@ namespace Orc.Fortress.TwoFactorProviders
         Task<bool> IUserTokenProvider<BackOfficeIdentityUser, int>.ValidateAsync(string purpose, string token, UserManager<BackOfficeIdentityUser, int> manager, BackOfficeIdentityUser user)
         {
             TwoFactorAuthenticator tfa = new TwoFactorAuthenticator();
+            
             var db = new FortressDatabase();
             var details = db.GetUserDetails(user.Id);
             
@@ -62,6 +65,7 @@ namespace Orc.Fortress.TwoFactorProviders
             if(details.IsValidated == false && isCorrectPIN)
             {
                 details.IsValidated = true;
+                Logger.Info(GetType(), "Validated token");
                 db.Update(details);
             }
             return Task.FromResult(isCorrectPIN);   
